@@ -21,9 +21,7 @@ class PropertyAPI(APIView):
 
         if property_id is not None:
             data = queryset.values_list('city', flat=True).get(id=property_id)
-            print(str(data))
             queryset = queryset.filter(city=data)
-            print(queryset)
             serializer = PropertyModelSerializer(queryset, many=True)
 
         if state_name is not None:
